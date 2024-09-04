@@ -8,8 +8,6 @@ public class LP510 {
         int n1 = sc.nextInt();
         System.out.print("Number 2: ");
         int n2 = sc.nextInt();
-        while (n2 > 0) {
-            if
-        }
+
     }
 }
