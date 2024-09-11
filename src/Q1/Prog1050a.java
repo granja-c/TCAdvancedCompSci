@@ -38,6 +38,9 @@ public class Prog1050a {
             System.out.println("Total profit on meat: " + moneyForm.format(computeSum(records, 2, "Meat", 13)));
             System.out.println("High priority sales percentage: " + computePercentage(records, 4, "H") + "%");
             System.out.println("Profits lost on fruit in 2012: " + moneyForm.format(computeProfitLost(records, "Fruits")));
+            System.out.println("High priority sales shipped late: " + computePriorityLate(records));
+            System.out.println("Highest profit on personal care: " + computeHighestProfit(records, 2, "Personal Care"));
+            System.out.println("Top region for snacks: " + computeMaxbyField(records, 2, "Snacks", 0));
         }
     }
     public static int computeCount(List<SalesRecord> records, int fInd, String val) {
@@ -82,4 +85,59 @@ public class Prog1050a {
         }
         return lost;
     }
+    public static int computePriorityLate(List<SalesRecord> records) {
+        int c = 0;
+        var dateForm = new SimpleDateFormat("M/d/yyyy");
+        for (var rec : records) {
+            if (rec.fields[4].equalsIgnoreCase("H")) {
+                try {
+                    Date order = dateForm.parse(rec.fields[5]);
+                    Date ship = dateForm.parse(rec.fields[7]);
+
+                    long diffMs = Math.abs(ship.getTime() - order.getTime());
+                    long diffDays = diffMs / (100 * 60 * 60 * 24);
+                    if (diffDays > 3) c++;
+                } catch (ParseException e) { e.printStackTrace(); }
+            }
+        }
+        return c;
+    }
+    public static String computeHighestProfit(List<SalesRecord> records, int fInd, String val) {
+        String country = "N/A";
+        double highest = 0;
+
+        for (var rec : records) {
+            if (rec.fields[fInd].equalsIgnoreCase(val)) {
+                double prof = Double.parseDouble(rec.fields[13]);
+                if (prof > highest) { highest = prof; }
+                country = rec.fields[1];
+            }
+        }
+
+        return country;
+    }
+    public static String computeMaxbyField(List<SalesRecord> records, int fInd, String val, int resInd) {
+        String topReg = "N/A";
+        int max = 0;
+        var regions = new ArrayList<String>();
+
+        for (var rec : records) {
+            if (rec.fields[fInd].equalsIgnoreCase(val)) {
+                String reg = rec.fields[resInd];
+                if (!regions.contains(reg)) regions.add(reg);
+            }
+        }
+        for (var reg : regions) {
+            int c = 0;
+            for (var rec : records) {
+                if (rec.fields[fInd].equalsIgnoreCase(val) && rec.fields[resInd].equalsIgnoreCase(reg)) c++;
+            }
+            if (c > max) {
+                max = c;
+                topReg = reg;
+            }
+        }
+        return topReg;
+    }
+
 }
