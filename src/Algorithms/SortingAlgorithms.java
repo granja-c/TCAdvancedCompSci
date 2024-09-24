@@ -19,6 +19,9 @@ public class SortingAlgorithms {
     public static <T extends Comparable<T>> void insertionSort(T[] arr) {
         // TODO
     }
+    public static <T extends Comparable<T>> void insertionSort(T[] arr, int size) {
+        // TODO
+    }
 
 
     public static <T extends Comparable<T>> void selectionSort(T[] arr) {
