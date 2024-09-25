@@ -41,6 +41,57 @@ public class Prog1050a {
             System.out.println("High priority sales shipped late: " + computePriorityLate(records));
             System.out.println("Highest profit on personal care: " + computeHighestProfit(records, 2, "Personal Care"));
             System.out.println("Top region for snacks: " + computeMaxbyField(records, 2, "Snacks", 0));
+
+            int aSales = 0;
+            for (var rec : records) {
+                if (rec.fields[0].equalsIgnoreCase("Sub-Saharan Africa")) aSales++;
+            }
+            System.out.println("Total number of records of sales to Africa: " + aSales);
+
+
+            // calc profit lost from trade war
+            double prof1 = 0.0;
+            for (var rec : records) {
+                prof1 += Double.parseDouble(rec.fields[13]);
+            }
+            // delete sales to kuwait
+            for (int i = 0; i < records.size(); i++) {
+                if (records.get(i).fields[1].equalsIgnoreCase("Kuwait")) {
+                    records.remove(i);
+                    i--;
+                }
+            }
+
+            // limit cosmetic sales to uganda to 100
+            int uc = 0;
+            for (int i = 0; i < records.size(); i++) {
+                var rec = records.get(i);
+                if (rec.fields[1].equalsIgnoreCase("Uganda") && rec.fields[2].equalsIgnoreCase("Cosmetics")) {
+                    if (uc > 100) {
+                        records.remove(i);
+                        i--;
+                    } else {
+                        uc++;
+                    }
+                }
+            }
+
+            // delete low priority office supplies from african countries
+            for (int i = 0; i < records.size(); i++) {
+                var rec = records.get(i);
+                if (rec.fields[0].equalsIgnoreCase("Sub-Saharan Africa") &&
+                        rec.fields[2].equalsIgnoreCase("Office Supplies") &&
+                        rec.fields[5].equalsIgnoreCase("L")) {
+                    records.remove(i);
+                    i--;
+                }
+            }
+            double prof2 = 0.0;
+            for (var rec : records) {
+                prof2 += Double.parseDouble(rec.fields[13]);
+            }
+            System.out.printf("Profits lost by trade war: $%.2f", (prof1-prof2));
+            System.out.println();
         }
     }
     public static int computeCount(List<SalesRecord> records, int fInd, String val) {
