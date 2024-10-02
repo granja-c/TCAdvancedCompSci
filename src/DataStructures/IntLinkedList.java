@@ -38,6 +38,55 @@ public class IntLinkedList {
         }
         System.out.println();
     }
+    public int getCount(){
+        int c = 1;
+        Node curr = head;
+        while (curr != null) {
+            curr = curr.next;
+            c++;
+        }
+        return c;
+    }
+    public boolean add(int num, int ind) {
+        if (ind > self.getCount()-1) return false;
+        else {
+            int c = 0;
+            var curr = head;
+            while (c != ind) {
+                curr = curr.next;
+                c++;
+            }
+            var newNode = new Node(num);
+            newNode.next = curr.next;
+            curr.next = newNode;
+        }
+    }
+    public boolean isEmpty() {
+        if (head == null) return true;
+        return false;
+    }
+    public int getFirst() {
+        return head.data;
+    }
+    public int getLast() {
+        while (curr.next != null) {
+            curr = curr.next;
+        }
+        return curr.data;
+    }
+    public int getByIndex(int ind) {
+        if (ind > getCount()) return -1;
+        int c = 0;
+        var curr = head;
+        while (c != ind) {
+            curr = curr.next;
+            c++;
+        }
+        return curr.data;
+    }
+
+
+    
     public Iterator<Integer> iterator() {
         return new Iterator<>;
             private new Iterator<Integer>();
