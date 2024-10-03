@@ -75,7 +75,7 @@ public class IntLinkedList {
         return curr.data;
     }
     public int getByIndex(int ind) {
-        if (ind > getCount()) return -1;
+        if (ind > getCount()-1) return -1;
         int c = 0;
         var curr = head;
         while (c != ind) {
@@ -84,9 +84,113 @@ public class IntLinkedList {
         }
         return curr.data;
     }
+    public void removeFirst() {
+        head = head.next;
+    }
+    public void removeLast() {
+        int ind = getCount();
+        var curr = head;
+        int c = 1;
+        while (c < ind-2) {
+            curr = curr.next;
+            c++;
+        }
+        curr.next = null;
+    }
+    public int countLessTen(){
+        var curr = head;
+        int count = 0;
+        while (curr.next != null) {
+            if (curr.data < 10) count++;
+            curr = curr.next;
+        }
+        return count;
+    }
+    public void clear() {
+        head = null;
+    }
+    public boolean contains(int n) {
+        var curr = head;
+        while (curr.next != null) {
+            if (curr.data == n) return true;
+        }
+        return false;
+    }
+    // reverse
+    public double avg() {
+        double c = 0;
+        int tot = 0;
+        var curr = head;
+        while (curr != null) {
+            c++;
+            tot += curr.data;
+        }
+        return (tot/c);
+    }
+    public int getMax() {
+        int max = head.data;
+        while (curr.next != null) {
+            if (curr.data > max) max = curr.data;
+        }
+        return max;
+    }
+    public int getMin() {
+        int min = head.data;
+        while (curr.next != null) {
+            if (curr.data < min) min = curr.data;
+        }
+        return min;
+    }
+    public int getMaxIndex() {
+        int max = getMax();
+        var curr = head;
+        int c = 0;
+        while (curr != null) {
+            if (curr.data = max) return c;
+            curr = curr.next;
+            c++;
+        }
+    }
+    public int getMinIndex() {
+        int min = getMin();
+        var curr = head;
+        int c = 0;
+        while (curr != null) {
+            if (curr.data = min) return c;
+            curr = curr.next;
+            c++;
+        }
+    }
+    public int getLastMaxInd() {
+        int max = getMax();
+        var curr = head;
+        int c = 0;
+        int res = 0;
+        while (curr != null) {
+            if (curr.data = max) res = c;
+            curr = curr.next;
+            c++;
+        }
+        return res;
+    }
+    //sort
+    public int remove58() {
+        int count = 0;
+        var curr = head;
+        while (curr.next != null)
+            //finish
+    }
+    public int evenCount(){
+        int c = 0;
+        var curr = head;
+        while (curr != null) {
+            if (curr.data % 2 == 0) c++;
+            curr = curr.next;
+        }
+        return c;
+    }
+    //remove odds
 
-
-    
     public Iterator<Integer> iterator() {
         return new Iterator<>;
             private new Iterator<Integer>();
