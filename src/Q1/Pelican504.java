@@ -9,13 +9,13 @@ public class Pelican504 {
         }
 
     }
-    private static int binarySearch(int[] a, int val) {
+    private static int binarySearch(Object a[], Object val) {
         int lb = 0;
         int ub = a.length-1;
         while (lb <= ub) {
             int mid = (lb+ub)/2;
-            if (a[mid]==val) return mid;
-            else if (val > a[mid]) lb = mid + 1;
+            if (a[mid].compareTo(val) == 0) return mid;
+            else if (val.compareTo(a[mid]) > 0) lb = mid + 1;
             else ub = mid - 1;
         }
         return -1;
