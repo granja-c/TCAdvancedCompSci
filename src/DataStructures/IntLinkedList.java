@@ -48,7 +48,7 @@ public class IntLinkedList {
         return c;
     }
     public boolean add(int num, int ind) {
-        if (ind > self.getCount()-1) return false;
+        if (ind > getCount()-1) return false;
         else {
             int c = 0;
             var curr = head;
@@ -69,6 +69,7 @@ public class IntLinkedList {
         return head.data;
     }
     public int getLast() {
+        var curr = head;
         while (curr.next != null) {
             curr = curr.next;
         }
@@ -129,6 +130,7 @@ public class IntLinkedList {
     }
     public int getMax() {
         int max = head.data;
+        var curr = head;
         while (curr.next != null) {
             if (curr.data > max) max = curr.data;
         }
@@ -136,6 +138,7 @@ public class IntLinkedList {
     }
     public int getMin() {
         int min = head.data;
+        var curr = head;
         while (curr.next != null) {
             if (curr.data < min) min = curr.data;
         }
@@ -146,20 +149,22 @@ public class IntLinkedList {
         var curr = head;
         int c = 0;
         while (curr != null) {
-            if (curr.data = max) return c;
+            if (curr.data == max) return c;
             curr = curr.next;
             c++;
         }
+        return c;
     }
     public int getMinIndex() {
         int min = getMin();
         var curr = head;
         int c = 0;
         while (curr != null) {
-            if (curr.data = min) return c;
+            if (curr.data == min) return c;
             curr = curr.next;
             c++;
         }
+        return c;
     }
     public int getLastMaxInd() {
         int max = getMax();
@@ -167,7 +172,7 @@ public class IntLinkedList {
         int c = 0;
         int res = 0;
         while (curr != null) {
-            if (curr.data = max) res = c;
+            if (curr.data == max) res = c;
             curr = curr.next;
             c++;
         }
@@ -175,10 +180,15 @@ public class IntLinkedList {
     }
     //sort
     public int remove58() {
-        int count = 0;
+        int c = 0;
+        if (head.data == 58) head = head.next;
         var curr = head;
-        while (curr.next != null)
-            //finish
+        for (int i = 1; i < getCount()-1; i++) {
+            if (curr.next.data == 58) {
+                curr.next = curr.next.next;
+                c++;
+            }
+        }
     }
     public int evenCount(){
         int c = 0;
@@ -190,17 +200,30 @@ public class IntLinkedList {
         return c;
     }
     //remove odds
-
-    public Iterator<Integer> iterator() {
-        return new Iterator<>;
-            private new Iterator<Integer>();
-            private Node curr = head;
-            public boolean hasNext() { return curr != null; }
-            public Integer next() {
-                int d = curr.data;
-                curr = curr.next;
-                return d;
+    public int loseOdds() {
+        int c = 0;
+        if (head.data % 2 == 1) head = head.next;
+        var curr = head;
+        for (int i = 1; i < getCount()-1; i++) {
+            if (curr.next.data % 2 == 1) {
+                curr.next = curr.next.next;
+                c++;
             }
+        }
     }
+
+
+
+//    public Iterator<Integer> iterator() {
+//        return new Iterator<>;
+//            private new Iterator<Integer>();
+//            private Node curr = head;
+//            public boolean hasNext() { return curr != null; }
+//            public Integer next() {
+//                int d = curr.data;
+//                curr = curr.next;
+//                return d;
+//            }
+//    }
 
 }
