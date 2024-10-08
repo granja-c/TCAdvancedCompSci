@@ -1,7 +1,7 @@
 package DataStructures;
 import java.util.Iterator;
 
-public class IntLinkedList {
+public class IntLinkedList implements Iterable<Integer> {
     private class Node {
         int data;
         Node next;
@@ -11,13 +11,14 @@ public class IntLinkedList {
         }
     }
     private Node head;
-    public IntLinkedList() implements Iterable<Integer> { head = null; }
+    public IntLinkedList() { head = null; }
 
     public void addFront(int d) {
         var node = new Node(d);
         node.next = head;
         head = node;
     }
+
     public void addLast(int d) {
         var newNode = new Node(d);
         if (head == null) {
@@ -30,14 +31,16 @@ public class IntLinkedList {
         }
         curr.next = newNode;
     }
+
     public void print() {
         var curr = head;
         while (curr != null) {
-            System.out.print(curr.data + " ");
+            System.out.print(curr.data + ", ");
             curr = curr.next;
         }
         System.out.println();
     }
+
     public int getCount(){
         int c = 1;
         Node curr = head;
@@ -47,6 +50,7 @@ public class IntLinkedList {
         }
         return c;
     }
+
     public boolean add(int num, int ind) {
         if (ind > getCount()-1) return false;
         else {
@@ -60,14 +64,17 @@ public class IntLinkedList {
             newNode.next = curr.next;
             curr.next = newNode;
         }
+        return true;
     }
     public boolean isEmpty() {
         if (head == null) return true;
         return false;
     }
+
     public int getFirst() {
         return head.data;
     }
+
     public int getLast() {
         var curr = head;
         while (curr.next != null) {
@@ -88,6 +95,7 @@ public class IntLinkedList {
     public void removeFirst() {
         head = head.next;
     }
+
     public void removeLast() {
         int ind = getCount();
         var curr = head;
@@ -98,6 +106,7 @@ public class IntLinkedList {
         }
         curr.next = null;
     }
+
     public int countLessTen(){
         var curr = head;
         int count = 0;
@@ -107,9 +116,19 @@ public class IntLinkedList {
         }
         return count;
     }
+
+    public void removeByIndex(int ind) {
+        var curr = head;
+        for (int i = 0; i < ind-1; i++) {
+            curr = curr.next;
+        }
+        curr.next = curr.next.next;
+    }
+
     public void clear() {
         head = null;
     }
+
     public boolean contains(int n) {
         var curr = head;
         while (curr.next != null) {
@@ -117,7 +136,9 @@ public class IntLinkedList {
         }
         return false;
     }
+
     // reverse
+
     public double avg() {
         double c = 0;
         int tot = 0;
@@ -128,6 +149,7 @@ public class IntLinkedList {
         }
         return (tot/c);
     }
+
     public int getMax() {
         int max = head.data;
         var curr = head;
@@ -136,6 +158,7 @@ public class IntLinkedList {
         }
         return max;
     }
+
     public int getMin() {
         int min = head.data;
         var curr = head;
@@ -144,6 +167,7 @@ public class IntLinkedList {
         }
         return min;
     }
+
     public int getMaxIndex() {
         int max = getMax();
         var curr = head;
@@ -155,6 +179,7 @@ public class IntLinkedList {
         }
         return c;
     }
+
     public int getMinIndex() {
         int min = getMin();
         var curr = head;
@@ -166,11 +191,12 @@ public class IntLinkedList {
         }
         return c;
     }
+
     public int getLastMaxInd() {
         int max = getMax();
         var curr = head;
-        int c = 0;
         int res = 0;
+        int c = 0;
         while (curr != null) {
             if (curr.data == max) res = c;
             curr = curr.next;
@@ -178,7 +204,23 @@ public class IntLinkedList {
         }
         return res;
     }
+
     //sort
+    public void sort() {
+        while (sorted() == false) {
+            int minInd = getMinIndex();
+            int min = getMin();
+        }
+    }
+
+    public boolean sorted() {
+        var curr = head;
+        while (curr.next != null) {
+            if (curr.data > curr.next.data) return false;
+        }
+        return true;
+    }
+
     public int remove58() {
         int c = 0;
         if (head.data == 58) head = head.next;
@@ -189,7 +231,9 @@ public class IntLinkedList {
                 c++;
             }
         }
+        return c;
     }
+
     public int evenCount(){
         int c = 0;
         var curr = head;
@@ -199,8 +243,8 @@ public class IntLinkedList {
         }
         return c;
     }
-    //remove odds
-    public int loseOdds() {
+
+    public int removeOdds() {
         int c = 0;
         if (head.data % 2 == 1) head = head.next;
         var curr = head;
@@ -210,20 +254,22 @@ public class IntLinkedList {
                 c++;
             }
         }
+        return c;
     }
 
+    public Iterator<Integer> iterator() {
+        return new Iterator<>() {
+            private Node current = head;
 
+            public boolean hasNext() {
+                return current != null;
+            }
 
-//    public Iterator<Integer> iterator() {
-//        return new Iterator<>;
-//            private new Iterator<Integer>();
-//            private Node curr = head;
-//            public boolean hasNext() { return curr != null; }
-//            public Integer next() {
-//                int d = curr.data;
-//                curr = curr.next;
-//                return d;
-//            }
-//    }
-
+            public Integer next() {
+                int data = current.data;
+                current = current.next;
+                return data;
+            }
+        };
+    }
 }
