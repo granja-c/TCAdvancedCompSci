@@ -207,19 +207,27 @@ public class IntLinkedList implements Iterable<Integer> {
 
     //sort
     public void sort() {
-        while (sorted() == false) {
-            int minInd = getMinIndex();
-            int min = getMin();
+        IntLinkedList s = new IntLinkedList();
+        int min = getMin();
+        s.head = new Node(min);
+        int minInd = getMinIndex();
+        removeByIndex(minInd);
+        while (isEmpty() == false) {
+            min = getMin();
+            s.addLast(min);
+            minInd = getMinIndex();
+            removeByIndex(minInd);
         }
+        head = s.head;
     }
 
-    public boolean sorted() {
-        var curr = head;
-        while (curr.next != null) {
-            if (curr.data > curr.next.data) return false;
-        }
-        return true;
-    }
+//    public boolean sorted() {
+//        var curr = head;
+//        while (curr.next != null) {
+//            if (curr.data > curr.next.data) return false;
+//        }
+//        return true;
+//    }
 
     public int remove58() {
         int c = 0;
