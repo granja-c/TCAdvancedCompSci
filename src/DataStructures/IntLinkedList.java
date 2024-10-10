@@ -123,6 +123,7 @@ public class IntLinkedList implements Iterable<Integer> {
             curr = curr.next;
         }
         curr.next = curr.next.next;
+        //if (curr.next.next != null) curr.next = null;
     }
 
     public void clear() {
@@ -131,8 +132,9 @@ public class IntLinkedList implements Iterable<Integer> {
 
     public boolean contains(int n) {
         var curr = head;
-        while (curr.next != null) {
+        while (curr != null) {
             if (curr.data == n) return true;
+            curr = curr.next;
         }
         return false;
     }
@@ -146,6 +148,7 @@ public class IntLinkedList implements Iterable<Integer> {
         while (curr != null) {
             c++;
             tot += curr.data;
+            curr = curr.next;
         }
         return (tot/c);
     }
@@ -153,8 +156,9 @@ public class IntLinkedList implements Iterable<Integer> {
     public int getMax() {
         int max = head.data;
         var curr = head;
-        while (curr.next != null) {
+        while (curr != null) {
             if (curr.data > max) max = curr.data;
+            curr = curr.next;
         }
         return max;
     }
@@ -162,8 +166,9 @@ public class IntLinkedList implements Iterable<Integer> {
     public int getMin() {
         int min = head.data;
         var curr = head;
-        while (curr.next != null) {
+        while (curr != null) {
             if (curr.data < min) min = curr.data;
+            curr = curr.next;
         }
         return min;
     }
@@ -212,12 +217,15 @@ public class IntLinkedList implements Iterable<Integer> {
         s.head = new Node(min);
         int minInd = getMinIndex();
         removeByIndex(minInd);
-        while (isEmpty() == false) {
+        while (getCount() != 1) {
             min = getMin();
             s.addLast(min);
             minInd = getMinIndex();
-            removeByIndex(minInd);
+            if (minInd == 0) removeFirst();
+            else if (minInd == getCount()-1) removeLast();
+            else removeByIndex(minInd);
         }
+        // s.addLast(head.data);
         head = s.head;
     }
 

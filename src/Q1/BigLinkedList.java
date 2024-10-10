@@ -17,7 +17,7 @@ public class BigLinkedList {
         list.addLast(1);
         list.print();
         System.out.println();
-        System.out.println(list.getCount());
+        System.out.println("length:" + list.getCount());
         list.add(1, 1);
         list.print();
         System.out.println();
@@ -35,20 +35,20 @@ public class BigLinkedList {
         list.print();
 
         System.out.println(list.contains(1));
+        // list.reverse().print();
+        System.out.println(list.avg());
+        System.out.println(list.getMin());
+        System.out.println(list.getMax());
+        System.out.println(list.getMaxIndex());
+        System.out.println(list.getLastMaxInd());
+        list.sort();
+        list.print();
 
-//        // list.reverse().print();
-//        System.out.println(list.avg());
-//        System.out.println(list.getMin());
-//        System.out.println(list.getMax());
-//        System.out.println(list.getMaxIndex());
-//        System.out.println(list.getLastMaxInd());
-//        //list.sort();
-//        list.print();
-//        System.out.println(list.remove58());
-//        list.print();
-//        System.out.println(list.evenCount());
-//        System.out.println(list.removeOdds());
-//        list.print();
-//        list.clear();
+        System.out.println(list.remove58());
+        list.print();
+        System.out.println(list.evenCount());
+        System.out.println(list.removeOdds());
+        list.print();
+        list.clear();
     }
 }
