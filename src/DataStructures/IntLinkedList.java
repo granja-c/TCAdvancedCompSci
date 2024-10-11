@@ -1,5 +1,6 @@
 package DataStructures;
 import java.util.Iterator;
+import java.util.*;
 
 public class IntLinkedList implements Iterable<Integer> {
     private class Node {
@@ -123,7 +124,6 @@ public class IntLinkedList implements Iterable<Integer> {
             curr = curr.next;
         }
         curr.next = curr.next.next;
-        //if (curr.next.next != null) curr.next = null;
     }
 
     public void clear() {
@@ -139,7 +139,21 @@ public class IntLinkedList implements Iterable<Integer> {
         return false;
     }
 
-    // reverse
+    public IntLinkedList reverse() {
+        IntLinkedList res = new IntLinkedList();
+        List<Integer> rev = new ArrayList<Integer>();
+        // for (int i = 0; i < )
+//        res.head = head;
+//        Node x = null;
+//        Node curr = res.head;
+//        while (curr != null) {
+//            Node temp = curr.next;
+//            curr.next = x;
+//            x = curr;
+//            curr = temp;
+//        }
+//        return res;
+    }
 
     public double avg() {
         double c = 0;

@@ -56,7 +56,7 @@ public class SortingAlgorithms {
             swap(arr, i, min);
         }
     }
-    public static <T extends Comparable<T>> void shellSort(T[] arr, int size) {
+    public static <T extends Comparable<T>> void shellSort(T[] arr) {
         int n = arr.length/2;
         int gap = n/2;
         while (gap > 0) {
@@ -72,4 +72,5 @@ public class SortingAlgorithms {
             gap /= 2;
         }
     }
+
 }
