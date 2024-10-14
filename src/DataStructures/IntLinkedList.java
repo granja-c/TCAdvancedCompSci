@@ -152,7 +152,7 @@ public class IntLinkedList implements Iterable<Integer> {
 //            x = curr;
 //            curr = temp;
 //        }
-//        return res;
+        return res;
     }
 
     public double avg() {
