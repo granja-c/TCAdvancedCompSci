@@ -142,6 +142,15 @@ public class IntLinkedList implements Iterable<Integer> {
     public IntLinkedList reverse() {
         IntLinkedList res = new IntLinkedList();
         List<Integer> rev = new ArrayList<Integer>();
+        var curr = head;
+        for (int i = 0; i < getCount(); i++) {
+            rev.add(curr.data);
+        }
+        Collections.reverse(rev);
+        for (int i = 0; i < rev.size(); i++) {
+            res.add(rev.get(i));
+        }
+        return res;
         // for (int i = 0; i < )
 //        res.head = head;
 //        Node x = null;
