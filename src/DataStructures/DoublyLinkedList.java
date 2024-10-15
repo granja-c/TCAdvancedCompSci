@@ -36,7 +36,19 @@ public class DoublyLinkedList<T extends Comparable<T>>{
     }
 
     public void addSorted(T element) {
-
+        var newNode = new Node(element);
+        if (head == null) head = newNode;
+        else {
+            var curr = head;
+           for (int i = 0; i < size; i++) {
+               if (curr.data.compareTo(newNode.data) < 0) {
+                   newNode.next = curr.next.next;
+                   curr.next.next.prev = newNode;
+                   curr.next = newNode;
+                   newNode.prev = curr;
+               }
+        }
+        size++;
     }
     public void addFront(T element) {
         var newNode = new Node(element);
