@@ -148,19 +148,8 @@ public class IntLinkedList implements Iterable<Integer> {
         }
         Collections.reverse(rev);
         for (int i = 0; i < rev.size(); i++) {
-            res.add(rev.get(i));
+            res.addLast(rev.get(i));
         }
-        return res;
-        // for (int i = 0; i < )
-//        res.head = head;
-//        Node x = null;
-//        Node curr = res.head;
-//        while (curr != null) {
-//            Node temp = curr.next;
-//            curr.next = x;
-//            x = curr;
-//            curr = temp;
-//        }
         return res;
     }
 

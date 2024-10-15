@@ -8,7 +8,6 @@ public class BigLinkedList {
         for (int i = 0; i < 200; i++)
             list.addFront((int)(Math.random() * 100 + 1));
 
-
         list.print();
         System.out.println();
         list.addFront(1);
@@ -42,7 +41,7 @@ public class BigLinkedList {
         System.out.println(list.getLastMaxInd());
         list.sort();
         list.print();
-        System.out.println("Reverse");
+        System.out.print("Reverse");
         list.reverse().print();
         System.out.println(list.remove58());
         list.print();

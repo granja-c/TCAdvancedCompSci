@@ -35,21 +35,22 @@ public class DoublyLinkedList<T extends Comparable<T>>{
         size++;
     }
 
-    public void addSorted(T element) {
-        var newNode = new Node(element);
-        if (head == null) head = newNode;
-        else {
-            var curr = head;
-           for (int i = 0; i < size; i++) {
-               if (curr.data.compareTo(newNode.data) < 0) {
-                   newNode.next = curr.next.next;
-                   curr.next.next.prev = newNode;
-                   curr.next = newNode;
-                   newNode.prev = curr;
-               }
-        }
-        size++;
-    }
+//    public void addSorted(T element) { fix
+//        var newNode = new Node(element);
+//        if (head == null) head = newNode;
+//        else {
+//            var curr = head;
+//            for (int i = 0; i < size; i++) {
+//                if (curr.data.compareTo(newNode.data) < 0) {
+//                    newNode.next = curr.next.next;
+//                    curr.next.next.prev = newNode;
+//                    curr.next = newNode;
+//                    newNode.prev = curr;
+//                }
+//            }
+//        }
+//        size++;
+//    }
     public void addFront(T element) {
         var newNode = new Node(element);
         if (head == null) head = newNode;
@@ -103,11 +104,13 @@ public class DoublyLinkedList<T extends Comparable<T>>{
         for (Node curr = head; curr != null; curr = curr.next) {
             System.out.print(curr.data + " ");
         }
+        System.out.println();
     }
     public void printReverse() {
         for (Node curr = tail; curr != null; curr = curr.prev) {
             System.out.print(curr.data + " ");
         }
+        System.out.println();
     }
 
     public int size() { return size; }

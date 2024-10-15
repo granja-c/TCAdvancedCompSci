@@ -8,13 +8,16 @@ public class TestDLLRandom {
             list.add((int)(Math.random() * 100));
         }
         list.print();
-        System.out.println();
         list.printReverse();
-
         list.addFront(1);
         list.print();
         list.insert(1, 1);
         list.print();
         list.remove(2);
+        list.print();
+        System.out.println(list.get(1));
+        list.set(1, 5);
+        list.print();
+
     }
 }
