@@ -35,22 +35,29 @@ public class DoublyLinkedList<T extends Comparable<T>>{
         size++;
     }
 
-//    public void addSorted(T element) { fix
+//    public void addSorted(T element) {
 //        var newNode = new Node(element);
 //        if (head == null) head = newNode;
+//        else if (head.data.compareTo(newNode.data) > 0) addFront(element);
+//        else if (tail != null && tail.data.compareTo(newNode.data) > 0) add(element);
 //        else {
+//            System.out.println("x");
 //            var curr = head;
-//            for (int i = 0; i < size; i++) {
-//                if (curr.data.compareTo(newNode.data) < 0) {
+//            while (curr.next != null) {
+//                if (curr.data.compareTo(newNode.data) > 0) {
 //                    newNode.next = curr.next.next;
 //                    curr.next.next.prev = newNode;
 //                    curr.next = newNode;
 //                    newNode.prev = curr;
+//                    size++;
+//                    return;
 //                }
+//                curr = curr.next;
 //            }
 //        }
 //        size++;
-//    }
+//    } i give up
+
     public void addFront(T element) {
         var newNode = new Node(element);
         if (head == null) head = newNode;

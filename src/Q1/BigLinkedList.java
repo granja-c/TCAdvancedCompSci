@@ -16,7 +16,7 @@ public class BigLinkedList {
         list.addLast(1);
         list.print();
         System.out.println();
-        System.out.println("length:" + list.getCount());
+        System.out.println(list.getCount());
         list.add(1, 1);
         list.print();
         System.out.println();
@@ -41,7 +41,6 @@ public class BigLinkedList {
         System.out.println(list.getLastMaxInd());
         list.sort();
         list.print();
-        System.out.print("Reverse");
         list.reverse().print();
         System.out.println(list.remove58());
         list.print();

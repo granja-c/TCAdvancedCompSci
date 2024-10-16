@@ -143,8 +143,9 @@ public class IntLinkedList implements Iterable<Integer> {
         IntLinkedList res = new IntLinkedList();
         List<Integer> rev = new ArrayList<Integer>();
         var curr = head;
-        for (int i = 0; i < getCount(); i++) {
+        while (curr != null) {
             rev.add(curr.data);
+            curr = curr.next;
         }
         Collections.reverse(rev);
         for (int i = 0; i < rev.size(); i++) {
@@ -237,17 +238,9 @@ public class IntLinkedList implements Iterable<Integer> {
             else if (minInd == getCount()-1) removeLast();
             else removeByIndex(minInd);
         }
-        // s.addLast(head.data);
         head = s.head;
     }
 
-//    public boolean sorted() {
-//        var curr = head;
-//        while (curr.next != null) {
-//            if (curr.data > curr.next.data) return false;
-//        }
-//        return true;
-//    }
 
     public int remove58() {
         int c = 0;
