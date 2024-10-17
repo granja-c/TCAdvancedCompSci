@@ -139,6 +139,7 @@ public class IntLinkedList implements Iterable<Integer> {
         return false;
     }
 
+
     public IntLinkedList reverse() {
         IntLinkedList res = new IntLinkedList();
         List<Integer> rev = new ArrayList<Integer>();
