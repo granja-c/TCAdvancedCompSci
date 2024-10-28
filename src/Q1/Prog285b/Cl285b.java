@@ -1,4 +1,4 @@
-package Prog285b;
+package Q1.Prog285b;
 
 public class Cl285b implements Comparable<Cl285b> {
     private int id;

@@ -1,11 +1,12 @@
-package Prog285b;
-import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Scanner;
+package Q1.Prog285b;
+
 import DataStructures.Queue;
 
-public class Prog285bQueue {
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Prog285bQStack {
     public static void main(String[] args) {
         try {
             var file = new Scanner(new File("Langdat/prog285b.dat"));
