@@ -86,6 +86,10 @@ public class DoublyLinkedList<T extends Comparable<T>>{
         curr.next = curr.next.next;
         size--;
     }
+    public void removeFirst() {
+        head = head.next;
+        head.prev = null;
+    }
     public T get(int ind) {
         if (ind >= size || ind == 0) throw new IndexOutOfBoundsException();
         Node curr = head;

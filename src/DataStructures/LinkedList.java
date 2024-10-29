@@ -30,6 +30,8 @@ public class LinkedList<T extends Comparable<T>>{
         size++;
         return true;
     }
+
+
     public T remove(int ind) {
         T old;
         if (ind == 0) {
