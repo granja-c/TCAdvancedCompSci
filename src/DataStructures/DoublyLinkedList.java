@@ -91,9 +91,9 @@ public class DoublyLinkedList<T extends Comparable<T>>{
         head.prev = null;
     }
     public T get(int ind) {
-        if (ind >= size || ind == 0) throw new IndexOutOfBoundsException();
+        if (ind >= size) throw new IndexOutOfBoundsException();
         Node curr = head;
-        for (int i = 0; i < ind; i++) curr = curr.next;
+        for (int i = 0; i < ind-1; i++) curr = curr.next;
         return curr.data;
     }
     public void set(int ind, T element) {

@@ -6,7 +6,15 @@ public class Cl285b implements Comparable<Cl285b> {
     private double sales;
     private double comm;
 
-    private void calc() { /* TODO */ }
+    private void calc() {
+        if (code == 5 || code == 8) {
+            if (sales > 5000) comm = 5000 * 0.075 + (sales-5000) * 0.085;
+            else comm = sales * 0.075;
+        } else {
+            if (sales > 3500) comm = 3500 * 0.095 + (sales-3500) * 0.12;
+            else comm = sales * 0.095;
+        }
+    }
 
     public Cl285b(int id, int code, double sales) {
         this.id = id;

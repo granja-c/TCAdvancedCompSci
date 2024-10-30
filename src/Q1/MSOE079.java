@@ -22,6 +22,7 @@ public class MSOE079 {
         }
         String[] res = new String[max-st+1];
         for (int i = 0; i < n; i++) {
+            // for (int j = 0; j < ma)
 //            if (n >= st && n < st+bw) res[i] += "*";
 //            else if (n >= st+bw && n < st+bw*2) res[i] += "*";
 //            else if (n >= st+bw*2 && n < st+bw*4) res[i] += "*";
