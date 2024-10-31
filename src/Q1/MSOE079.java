@@ -17,15 +17,19 @@ public class MSOE079 {
         int max = 0;
         for (int i = 0; i < n; i++) {
             int x = sc.nextInt();
-            nums[n] = x;
+            nums[i] = x;
             if (x > max) max = x;
         }
+
         String[] res = new String[max-st+1];
         for (int i = 0; i < n; i++) {
-            // for (int j = 0; j < ma)
-//            if (n >= st && n < st+bw) res[i] += "*";
-//            else if (n >= st+bw && n < st+bw*2) res[i] += "*";
-//            else if (n >= st+bw*2 && n < st+bw*4) res[i] += "*";
+            for (int j = 0; j < max; j+=bw) {
+                if (nums[i] >= st+j && nums[i] < st+bw) res[j/bw] += "*";
+            }
+        }
+
+        for (String s:res) {
+            System.out.println(s);
         }
     }
 }
