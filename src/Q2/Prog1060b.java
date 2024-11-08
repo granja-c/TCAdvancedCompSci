@@ -13,8 +13,7 @@ public class Prog1060b {
                 queue.add(num);
             }
             if (l.equals("d")) {
-                System.out.println(queue.remove(););
-
+                System.out.println(queue.remove());
             }
 
             System.out.println("Current queue: " + queue);
