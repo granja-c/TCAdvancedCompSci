@@ -13,9 +13,7 @@ public class Prog1060b {
                 queue.add(num);
             }
             if (l.equals("d")) {
-                System.out.println("Number to be deleted: ");
-                Iterator iter = queue.iterator();
-                // while (iter.next())
+                System.out.println(queue.remove(););
 
             }
 
