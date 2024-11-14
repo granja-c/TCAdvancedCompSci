@@ -1,7 +1,6 @@
 package Q1.Prog285b;
 
-import DataStructures.Queue;
-import DataStructures.Stack;
+import DataStructures.QStack;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,7 +10,7 @@ public class Prog285bQStack {
     public static void main(String[] args) {
         try {
             var file = new Scanner(new File("Langdat/prog285b.dat"));
-            var stack = new Stack<Cl285b>();
+            var stack = new QStack<Cl285b>();
 
             System.out.println("Id\tCode\tSales\tCommission");
             while (file.hasNext()) {
