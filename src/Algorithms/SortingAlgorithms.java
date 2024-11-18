@@ -72,5 +72,43 @@ public class SortingAlgorithms {
             gap /= 2;
         }
     }
+    public static <T extends Comparable<T>> void quickSort(T[] arr) {
+        quickSort(arr, 0, arr.length-1);
+    }
+    public static <T extends Comparable<T>> void quickSort(T[] arr, int l, int h) {
+        if (l < h) {
+            int piv = partition(arr, l, h);
+            quickSort(arr, l, piv-1);
+            quickSort(arr, piv+1, h);
+        }
+    }
+    public static <T extends Comparable<T>> int partition(T[] arr, int l, int h) {
+        T piv = arr[h];
+        int i = l-1;
+        for (int j = l; j < h; j++) {
+            if (arr[j].compareTo(piv) <= 0) {
+                i++;
+                swap(arr, i, j);
+            }
+        }
+        swap(arr, i+1, h);
+        return i+1;
+    }
+
+    public static <T extends Comparable<T>> void mergeSort(T[] arr) {
+      mergeSort(arr, 0, arr.length-1);
+    }
+    public static <T extends Comparable<T>> void mergeSort(T[] arr, int l, int r){
+        if (arr.length > 1) {
+            int mid = arr.length/2;
+
+        }
+    }
+    public static <T extends Comparable<T>> void merge(T[] arr, int l, int r) {
+        int i = 0;
+        int j = 0;
+        int k = 0;
+        while ()
+    }
 
 }
