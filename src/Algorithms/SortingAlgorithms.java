@@ -101,14 +101,33 @@ public class SortingAlgorithms {
     public static <T extends Comparable<T>> void mergeSort(T[] arr, int l, int r){
         if (arr.length > 1) {
             int mid = arr.length/2;
-
+            //
         }
     }
-    public static <T extends Comparable<T>> void merge(T[] arr, int l, int r) {
+    public static <T extends Comparable<T>> void merge(T[] arr, T[] l, T[] r) {
         int i = 0;
         int j = 0;
         int k = 0;
-        while ()
+        while (i < l.length && j < r.length) {
+            if (l[i].compareTo(r[j]) < 0) {
+                arr[k] = l[i];
+                i++;
+            } else {
+                arr[k] = r[j];
+                j++;
+            }
+            k++;
+        }
+        while (i < l.length) {
+            arr[k] = l[i];
+            i++;
+            k++;
+        }
+        while (j < r.length) {
+            arr[k] = r[j];
+            j++;
+            k++;
+        }
     }
 
 }
