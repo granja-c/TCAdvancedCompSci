@@ -1,6 +1,4 @@
-package Q2;
-import DataStructures.Stack;
-import Q1.Prog285b.Cl285b;
+package Q2.Prog285b2;
 import DataStructures.BinarySearchTree;
 
 import java.io.File;
@@ -11,7 +9,7 @@ public class Prog285bBinaryTree {
     public static void main(String[] args) {
         try {
             var file = new Scanner(new File("Langdat/prog285b.dat"));
-            var tree = new BinarySearchTree<Cl285b>();
+            var tree = new BinarySearchTree<Cl285b2>();
 
             System.out.println("Id\tCode\tSales\tCommission");
             while (file.hasNext()) {
@@ -19,7 +17,7 @@ public class Prog285bBinaryTree {
                 int c = file.nextInt();
                 double s = file.nextDouble();
 
-                var fred = new Cl285b(id, c, s);
+                var fred = new Cl285b2(id, c, s);
                 tree.insert(fred);
             }
             tree.printInOrder();

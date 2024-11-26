@@ -5,22 +5,22 @@ public class BinarySearchTree<T extends Comparable<T>> {
         T data;
         Node left;
         Node right;
-        public Node(T dat) {
+        Node(T dat) {
             data = dat;
             left = null;
             right = null;
         }
         public int compareTo(Node o) { return data.compareTo(o.data); }
     }
-    protected Node root;
 
+    protected Node root;
     public BinarySearchTree() {
         root = null;
     }
-    private void insert(T element) {
+    public void insert(T element) {
         root = insert(root, element);
     }
-    public Node insert(Node node, T element) {
+    private Node insert(Node node, T element) {
         if (node == null) return new Node(element);
         if (element.compareTo(node.data) < 0)
             node.left = insert(node.left, element);
