@@ -101,7 +101,17 @@ public class SortingAlgorithms {
     public static <T extends Comparable<T>> void mergeSort(T[] arr, int l, int r){
         if (arr.length > 1) {
             int mid = arr.length/2;
-            //
+            var lef = (T[]) new Comparable[mid];
+            var rig = (T[]) new Comparable[mid];
+            for (int i = 0; i < mid; i++) {
+                lef[i] = arr[i];
+            }
+            for (int i = mid; i < arr.length; i++) {
+                rig[i] = arr[i];
+            }
+            mergeSort(lef);
+            mergeSort(rig);
+            merge(arr, lef, rig);
         }
     }
     public static <T extends Comparable<T>> void merge(T[] arr, T[] l, T[] r) {
