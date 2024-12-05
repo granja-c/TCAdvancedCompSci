@@ -20,10 +20,9 @@ public class Prog285bBinaryTree {
                 var fred = new Cl285b2(id, c, s);
                 tree.insert(fred);
             }
-            tree.printInOrder();
             file.close();
-
-
+            tree.delete(tree.getRootData());
+            tree.printInOrder();
 
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
