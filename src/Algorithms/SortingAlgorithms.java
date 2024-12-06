@@ -106,8 +106,10 @@ public class SortingAlgorithms {
             for (int i = 0; i < mid; i++) {
                 lef[i] = arr[i];
             }
+            int n = 0;
             for (int i = mid; i < arr.length; i++) {
-                rig[i] = arr[i];
+                rig[n] = arr[i];
+                n++;
             }
             mergeSort(lef);
             mergeSort(rig);
