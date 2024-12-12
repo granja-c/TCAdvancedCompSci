@@ -86,5 +86,74 @@ public class BinarySearchTree<T extends Comparable<T>> {
         inOrder(node.right);
     }
 
+    public void printPreOrder() {
+        preOrder(root);
+        System.out.println();
+    }
+    private void preOrder(Node node) {
+        if (node != null) {
+            System.out.print(node.data + " ");
+            preOrder(node.left);
+            preOrder(node.right);
+        }
+    }
+    public void printPostOrder() {
+        postOrder(root);
+    }
+
+    private void postOrder(Node node) {
+        if (node != null) {
+            postOrder(node.left);
+            postOrder(node.right);
+            System.out.print(node.data + " ");
+        }
+    }
+
+    public void printLevelOrder() {
+        levelOrder();
+    }
+    private void levelOrder() {
+        Queue<Node> q = new Queue<>();
+        q.enqueue(root);
+        while (!q.isEmpty()) {
+            Node node = q.dequeue();
+            System.out.println(node.data);
+            if (node.left != null) q.enqueue(node.left);
+            if (node.right != null) q.enqueue(node.right);
+        }
+    }
+
+
+    public void invert() { root = invert(root); }
+    private Node invert(Node node) {
+        if (node == null) return null;
+        Node l = invert(node.left);
+        node.left = invert(node.right);
+        node.right = l;
+        return node;
+    }
+    public int getHeight() { return height(root); }
+    private int height(Node node) {
+        node = root;
+        if (node == null) return 0;
+        return 1 + Math.max(height(node.left), height(node.right));
+    }
+    public int getWidth() { return width(root); }
+    public int width(Node node) {
+        if (node == null) return 0;
+        Queue<Node> queue = new Queue<>();
+        queue.enqueue(node);
+        int max = 0;
+        while (!queue.isEmpty()) {
+            int c = queue.size();
+            max = Math.max(max, c);
+            while (c --> 0) {
+                Node curr = queue.dequeue();
+                if (curr.left != null) queue.enqueue(curr.left);
+                if (curr.right != null) queue.enqueue(curr.right);
+            }
+        }
+        return max;
+    }
 
 }
