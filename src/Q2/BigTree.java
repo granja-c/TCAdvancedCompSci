@@ -13,11 +13,13 @@ public class BigTree {
         }
         tree.printInOrder();
         tree.printPreOrder();
-        // size
+        System.out.println(tree.getSize());
         tree.insert((int)(Math.random() * 102) + 51);
         System.out.println(tree.search(32));
         // node closest to avg
         System.out.println(tree.getHeight());
         System.out.println(tree.getWidth());
+        tree.printLevelOrder();
+        tree.printDepthFirst();
     }
 }

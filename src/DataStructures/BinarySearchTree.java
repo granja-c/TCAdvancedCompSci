@@ -14,7 +14,9 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
 
     protected Node root;
+    int size;
     public BinarySearchTree() {
+        size = 0;
         root = null;
     }
     public void insert(T element) {
@@ -26,6 +28,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
             node.left = insert(node.left, element);
         else if (element.compareTo(node.data) > 0)
             node.right = insert(node.right, element);
+        size++;
         return node;
     }
 
@@ -59,9 +62,10 @@ public class BinarySearchTree<T extends Comparable<T>> {
             node.data = min.data;
             node.right = delete(node.right, min.data);
         }
+        size--;
         return node;
     }
-
+    public int getSize() { return size; }
     private Node findMin(Node node) {
         while (node.left != null) {
             node = node.left;
@@ -117,12 +121,30 @@ public class BinarySearchTree<T extends Comparable<T>> {
         q.enqueue(root);
         while (!q.isEmpty()) {
             Node node = q.dequeue();
-            System.out.println(node.data);
+            System.out.print(node.data + " ");
             if (node.left != null) q.enqueue(node.left);
             if (node.right != null) q.enqueue(node.right);
         }
     }
 
+
+    public void printDepthFirst() {
+        depthFist();
+    }
+    private void depthFist() {
+        Stack<Node> s = new Stack<>();
+        s.push(root);
+        while (!s.isEmpty()) {
+            Node node = s.pop();
+            System.out.print(node.data + " ");
+            if (node.right != null) {
+                s.push(node.right);
+            }
+            if (node.left != null) {
+                s.push(node.left);
+            }
+        }
+    }
 
     public void invert() { root = invert(root); }
     private Node invert(Node node) {
