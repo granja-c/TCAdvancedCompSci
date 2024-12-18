@@ -28,7 +28,7 @@ public class MSOE247 {
         while (!str.equals("ignore 0x0x0")) {
             str = input.nextLine();
             int sp = 0;
-            for (int i = 0; i < str.length(); i++) { //name
+            for (int i = 0; i < str.length(); i++) {
                 if (!str.substring(i, i+1).equals(" ")) {
                     n += str.substring(i, i+1);
                 }
@@ -39,7 +39,7 @@ public class MSOE247 {
             }
             System.out.println(n);
             int sp2 = 0;
-            for (int i = sp; i < str.length(); i++) { //wid
+            for (int i = sp; i < str.length(); i++) {
                 if (!str.substring(i, i+1).equals("x") && !str.substring(i, i+1).equals(" ")) {
                     w += str.substring(i, i+1);
                 }
@@ -50,7 +50,7 @@ public class MSOE247 {
             }
             System.out.println(w);
             int sp3 = 0;
-            for (int i = sp2; i < str.length(); i++) { //len
+            for (int i = sp2; i < str.length(); i++) {
                 if (!str.substring(i, i+1).equals("x")) {
                     l += str.substring(i, i+1);
                 }
