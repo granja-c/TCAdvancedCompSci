@@ -15,6 +15,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
     protected Node root;
     int size;
+
+
     public BinarySearchTree() {
         size = 0;
         root = null;
@@ -79,9 +81,23 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return node;
     }
 
+
     public void printInOrder() {
         inOrder(root);
         System.out.println();
+    }
+    public T getClosest(T value) {
+        return closest(root, value).data;
+    }
+    private Node closest(Node node, T value) {
+        if (node == null) return null;
+        if (node.right != null && value.compareTo(root.data) > 0) {
+            closest(node.right, value);
+        }
+        if (node.left != null && value.compareTo(root.data) < 0) {
+            closest(node.left, value);
+        }
+        return node;
     }
     private void inOrder(Node node) {
         if (node == null) return;
@@ -104,7 +120,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
     public void printPostOrder() {
         postOrder(root);
     }
-
     private void postOrder(Node node) {
         if (node != null) {
             postOrder(node.left);
@@ -112,6 +127,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
             System.out.print(node.data + " ");
         }
     }
+
+
 
     public void printLevelOrder() {
         levelOrder();
@@ -126,7 +143,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
             if (node.right != null) q.enqueue(node.right);
         }
     }
-
 
     public void printDepthFirst() {
         depthFist();
@@ -156,7 +172,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
     public int getHeight() { return height(root); }
     private int height(Node node) {
-        node = root;
         if (node == null) return 0;
         return 1 + Math.max(height(node.left), height(node.right));
     }
