@@ -103,7 +103,6 @@ public class MSOE247 {
 
 
 
-
 //        var g1 = list.get(0);
 //        for (int i = 1; i < list.size(); i++) {
 //            var g2 = list.get(i);
