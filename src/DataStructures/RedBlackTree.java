@@ -107,13 +107,23 @@ public class RedBlackTree<T extends Comparable<T>> {
             if (k.parent == k.parent.parent.right) {
                 u = k.parent.parent.left;
                 if (u.color == RED) k = flipColors(u, k);
-            } else {
-                if (k == k.parent.left) {
-                    k = k.parent;
-                    rightRotate(k);
+            }  else {
+                u = k.parent.parent.right;
+                if (u.color == RED) {
+                    k = flipColors(u, k);
+                } else {
+                    if (k == k.parent.right) {
+                        k = k.parent;
+                        leftRotate(k);
+                    }
+                    k.parent.color = BLACK;
+                    k.parent.parent.color = RED;
+                    rightRotate(k.parent.parent);
                 }
             }
+            if (k == root) break;
         }
+        root.color = BLACK;  // Property 2
     }
 
     /* TODO: Optional */

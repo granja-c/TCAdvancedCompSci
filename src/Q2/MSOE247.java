@@ -91,31 +91,5 @@ public class MSOE247 {
         for (int i = 0; i < list.size(); i++) {
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
-//        var g1 = list.get(0);
-//        for (int i = 1; i < list.size(); i++) {
-//            var g2 = list.get(i);
-//            if (g1.hei-g2.hei >= 1) {
-//                if ((g1.wid-g2.wid >= 1 && g1.len-g2.len >= 1) || (g1.wid-g2.len >= 1 && g1.len-g2.wid >= 1)) {
-//                    System.out.print(", ");
-//                    g2.print();
-//                }
-//            } else {
-//                System.out.print("\n");
-//                g2.print();
-//            }
-//            g1 = g2;
-//        }
     }
 }
