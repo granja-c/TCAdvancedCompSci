@@ -18,19 +18,16 @@ public class MSOE247 {
         public void print() {
             System.out.print(name + ": " + wid + "x" + len + "x" + hei);
         }
-        public double getVol(){
-            return vol;
-        }
     }
+
     public static void main(String[] args) {
         var list = new ArrayList<gift>();
         Scanner input = new Scanner(System.in);
-        String str = "";
+        String str = input.nextLine();
         String n = "";
         String w = "";
         String l = "";
         String h = "";
-        str = input.nextLine();
         while (!str.equals("ignore 0x0x0")) {
             int sp = 0;
             for (int i = 0; i < str.length(); i++) {
@@ -38,7 +35,7 @@ public class MSOE247 {
                     n += str.substring(i, i+1);
                 }
                 if (str.substring(i, i+1).equals(" ")) {
-                    sp = i+1;
+                    sp = i;
                     i = str.length();
                 }
             }
@@ -49,7 +46,7 @@ public class MSOE247 {
                     w += str.substring(i, i+1);
                 }
                 if (str.substring(i, i+1).equals("x")) {
-                    sp2 = i+1;
+                    sp2 = i;
                     i = str.length();
                 }
             }
@@ -60,7 +57,7 @@ public class MSOE247 {
                     l += str.substring(i, i+1);
                 }
                 if (str.substring(i, i+1).equals("x")) {
-                    sp3 = i+1;
+                    sp3 = i;
                     i = str.length();
                 }
             }
@@ -71,25 +68,50 @@ public class MSOE247 {
             double leng = Double.parseDouble(l);
             double height = Double.parseDouble(h);
             var g = new gift(n, width, leng, height);
-            for (int i = 0; i < list.size(); i++) {
-                if (g.getVol() > list.get(i).getVol()) {
-                    list.add(i, g);
-                }
-            }
             list.add(g);
-
-            n = "";
-            w = "";
-            l = "";
-            h = "";
             str = input.nextLine();
         }
 
         list.get(0).print();
 
-        ArrayList<ArrayList<gift>> gifts = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
 
+        for (int i = 1; i < list.size()-1; i++) {
+            for (int j = i+1; j < list.size(); j++) {
+                if (list.get(j).vol < list.get(i).vol) {
+                    var x = list.get(j);
+                    list.remove(j);
+                    list.add(i-1, x);
+                    j--;
+                }
+            }
         }
+
+        ArrayList<ArrayList<gift>> gifts = new ArrayList<ArrayList<gift>>();
+        for (int i = 0; i < list.size()-1; i++) {
+            var lg = new ArrayList<gift>();
+            var cg = list.get(i);
+            lg.add(cg);
+            for (int j = i+1; j < list.size(); j++) {
+                if (cg.vol / list.get(j).vol >= 1.55 && cg.vol / list.get(j).vol <= 1.65) {
+                    lg.add(list.get(j));
+                    cg = list.get(j);
+                }
+            }
+            gifts.add(lg);
+        }
+        int m = gifts.get(0).size();
+        int ind = 0;
+        for (int i = 0; i < gifts.size(); i++) {
+            if (gifts.get(i).size() > m) {
+                m = gifts.get(i).size();
+                ind = i;
+            } else if (gifts.get(i).size() == m) {
+                if (gifts.get(i).get(0).vol > gifts.get(ind).get(0).vol) {
+                    m = gifts.get(i).size();
+                    ind = i;
+                }
+            }
+        }
+        gifts.get(ind).get(0).print();
     }
 }
