@@ -42,11 +42,11 @@ public class MSOE247 {
             System.out.println(n);
             int sp2 = 0;
             for (int i = sp; i < str.length(); i++) {
-                if (!str.substring(i, i+1).equals("x") && !str.substring(i, i+1).equals(" ")) {
+                if (!str.substring(i, i+1).equals("x")) {
                     w += str.substring(i, i+1);
                 }
                 if (str.substring(i, i+1).equals("x")) {
-                    sp2 = i;
+                    sp2 = i+1;
                     i = str.length();
                 }
             }
@@ -57,7 +57,7 @@ public class MSOE247 {
                     l += str.substring(i, i+1);
                 }
                 if (str.substring(i, i+1).equals("x")) {
-                    sp3 = i;
+                    sp3 = i+1;
                     i = str.length();
                 }
             }
@@ -70,10 +70,10 @@ public class MSOE247 {
             var g = new gift(n, width, leng, height);
             list.add(g);
             str = input.nextLine();
+            n = "";
+            w = "";
+            l = "";
         }
-
-        list.get(0).print();
-
 
         for (int i = 1; i < list.size()-1; i++) {
             for (int j = i+1; j < list.size(); j++) {
