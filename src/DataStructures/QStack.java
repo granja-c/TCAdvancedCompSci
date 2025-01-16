@@ -22,4 +22,5 @@ public class QStack<T extends Comparable<T>>{
     public T pop() { return q1.dequeue(); }
     public T peek() { return q1.peek(); }
     public boolean isEmpty() { return q1.isEmpty(); }
+    public int size() { return q1.size(); }
 }
