@@ -3,21 +3,22 @@ package Q2.Prog602b;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
+import DataStructures.Queue;
 
-public class Prog602b {
+public class Prog602bQueue {
     public static void main(String[] args) {
         try {
             Scanner sc = new Scanner(new File("Langdat/prog602b.dat"));
-            Stack<Cl602b> accs = new Stack<>();
+            var accs = new Queue<Cl206b>();
             while (sc.hasNext()) {
                 int n = sc.nextInt();
                 double h = sc.nextDouble();
                 int c = sc.nextInt();
                 Cl602b cus = new Cl602b(n, h, c);
-                accs.push(cus);
+                accs.enqueue(cus);
             }
             while (!accs.isEmpty()) {
-                accs.pop().print();
+                System.out.print(accs.dequeue());
             }
 
         } catch (IOException e) {
