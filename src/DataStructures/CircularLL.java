@@ -10,6 +10,7 @@ public class CircularLL<T extends Comparable<T>> implements Iterable<T> {
         Node(T data) {
             this.data = data;
             next = null;
+
         }
         public int compareTo(Node x) { return data.compareTo(x.data); }
     }
