@@ -77,4 +77,6 @@ public class Set<T extends Comparable<T>> implements Iterable<T> {
         }
         return false;
     }
+    public boolean isEmpty() { return size == 0; }
+    public int size() { return size; }
 }
