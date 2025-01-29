@@ -69,6 +69,22 @@ public class Set<T extends Comparable<T>> implements Iterable<T> {
         size++;
     }
 
+    public void remove(T key) {
+        int ind = getIndex(key);
+        Entry<T> curr = table[ind];
+        Entry<T> prev = null;
+        while (curr != null) {
+            if (curr.key.equals(key)) {
+                if (prev == null) table[ind] = curr.next;
+                else prev.next = curr.next;
+                size--;
+                return;
+            }
+            prev = curr;
+            curr = curr.next;
+        }
+    }
+
     public boolean contains(T key) {
         Entry<T> curr = table[getIndex(key)];
         while (curr != null) {
@@ -79,4 +95,41 @@ public class Set<T extends Comparable<T>> implements Iterable<T> {
     }
     public boolean isEmpty() { return size == 0; }
     public int size() { return size; }
+
+    public void enumerate() {
+        System.out.print("{ ");
+        for (Entry<T> entry : table) {
+            var curr = entry;
+            while (curr != null) {
+                System.out.print(curr.key + " ");
+                curr = curr.next;
+            }
+        }
+        System.out.println(" }");
+    }
+
+    public Iterator<T> iterator() {
+        return new Iterator<>() {
+            private int index = 0;
+            private Entry<T> curr = null;
+
+            public boolean hasNext(){
+                if (curr != null) return true;
+                while (index < table.length) {
+                    if (table[index] != null) {
+                        curr = table[index++];
+                        return true;
+                    }
+                    index++;
+                }
+                return false;
+            }
+            public T next() {
+                if (!hasNext()) throw new NoSuchElementException();
+                T key = curr.key;
+                curr = curr.next;
+                return key;
+            }
+        };
+    }
 }
