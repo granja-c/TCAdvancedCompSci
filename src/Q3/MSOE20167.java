@@ -36,6 +36,11 @@ public class MSOE20167 {
             for (int row = 0; row < n; row++) {
                 for (int col = 0; col < n; col++) {
                     int x = puzzle[row][col];
+                    for (int rr = 0; row < n; row++) {
+                        for (int cc = 0; col < n; col++) {
+                            // if x ==
+                        }
+                    }
                 }
             }
 
