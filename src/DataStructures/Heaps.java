@@ -49,4 +49,24 @@ public class Heaps <T extends Comparable<T>>{
         heap = newHeap;
         capacity = newCapacity;
     }
+    void swim (int k) {
+        while (k > 0 && compare(heap[k], heap[(k-1)/2]) > 0) {
+            swap(k, (k-1) / 2);
+            k = (k-1) / 2;
+        }
+    }
+    void sink(int k) {
+        while (2 * k + 1 < size) {
+            int j = 2 * k + 1;
+            if (j+1 < size && compare(heap[j], heap[j+1]) < 0) {
+                swap (k, (k-1)/2);
+                k = (k-1) / 2;
+            }
+            if (compare(heap[k], heap[j]) >= 0) {
+                break;
+            }
+            swap(k, j);
+            k = j;
+        }
+    }
 }
