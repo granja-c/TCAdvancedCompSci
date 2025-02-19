@@ -1,6 +1,6 @@
 package DataStructures;
 
-public class Heaps <T extends Comparable<T>>{
+public class Heap<T extends Comparable<T>>{
     private static final int DEFAULT_CAPACITY = 16;
     T[] heap;
     private int size;

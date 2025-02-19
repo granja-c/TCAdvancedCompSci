@@ -142,5 +142,6 @@ public class Set<T extends Comparable<T>> implements Iterable<T> {
             var x = iter.next();
             if (big.contains((Comparable) x)) res.insert((Comparable) x);
         }
+        return res;
     }
 }
