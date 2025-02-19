@@ -132,4 +132,15 @@ public class Set<T extends Comparable<T>> implements Iterable<T> {
             }
         };
     }
+
+    public Set intersection(Set<T> set2) {
+        Set small = (this.size() < set2.size()) ? this : set2;
+        Set big = (this.size() < set2.size()) ? set2 : this;
+        Set res = new Set();
+        var iter = small.iterator();
+        while (iter.hasNext()) {
+            var x = iter.next();
+            if (big.contains((Comparable) x)) res.insert((Comparable) x);
+        }
+    }
 }
