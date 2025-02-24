@@ -33,7 +33,7 @@ public class Prog505a {
                 if (i.getPoints() > n.getPoints()) n = i;
                 tot += i.getPoints();
             }
-            System.out.println("Avergae points: " + tot/arr.size());
+            System.out.println("Average points: " + tot/arr.size());
             System.out.println("Winner: " + n.getName());
 
         } catch (IOException e) {
