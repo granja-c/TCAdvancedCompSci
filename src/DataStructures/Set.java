@@ -124,6 +124,7 @@ public class Set<T extends Comparable<T>> implements Iterable<T> {
                 }
                 return false;
             }
+
             public T next() {
                 if (!hasNext()) throw new NoSuchElementException();
                 T key = curr.key;

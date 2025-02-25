@@ -142,4 +142,10 @@ public class SortingAlgorithms {
         }
     }
 
+    public static <T extends Comparable<T>> void heapSort(T[] arr) {
+        int n = arr.length;
+
+    }
+    public static <T extends Comparable<T>> void buildMaxHeap(T[] arr) {}
+    public static <T extends Comparable<T>> void maxHeapify(T[] arr, T[] l, T[] r){}
 }
