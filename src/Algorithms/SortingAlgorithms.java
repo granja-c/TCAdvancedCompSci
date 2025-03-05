@@ -163,7 +163,7 @@ public class SortingAlgorithms {
         int left = 2 * i + 1;
         int right = 2 * i + 2;
         if (left < n && arr[left].compareTo(arr[max]) > 0) max = left;
-        if (right < n && arr[right].compareTo(arr[max]) > 0) max = right;
+        if ( right < n && arr[right].compareTo(arr[max]) > 0) max = right;
         if (max != i) {
             swap(arr, max, i);
             maxHeapify(arr, max, n);
