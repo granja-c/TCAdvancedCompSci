@@ -14,7 +14,15 @@ public class MSOE145 {
         while (Math.pow(fac, 2) < x) {
             if (x % fac == 0) {
                 facs.add(fac);
-            }
+                x /= fac;
+            } else fac++;
         }
+        if (Math.pow(fac, 2) == x) {
+            facs.add(fac);
+        } else fac.add(x);
+
+        int res = 1;
+        for (int i:facs) res *= i;
+        System.out.print(res);
     }
 }
