@@ -1,6 +1,8 @@
 package DataStructures;
 
-public class DoublyLinkedList<T extends Comparable<T>>{
+import java.util.Iterator;
+
+public class DoublyLinkedList<T extends Comparable<T>> implements Iterable<T>{
     private class Node implements Comparable<Node> {
         T data;
         Node prev;
@@ -76,7 +78,7 @@ public class DoublyLinkedList<T extends Comparable<T>>{
         curr.prev = newNode;
     }
 
-    public void remove(int ind) {
+    public void removeItem(int ind) {
         if (ind >= size || ind == 0) throw new IndexOutOfBoundsException();
         var curr = head;
         for (int i = 0; i < ind-1; i++) {
@@ -122,6 +124,24 @@ public class DoublyLinkedList<T extends Comparable<T>>{
     public int size() { return size; }
     public boolean isEmpty() { return size==0; }
 
+    public void remove(T item) {}
+    public T pop() {
+        return null;
+    }
 
+    public Iterator<T> iterator() {
+        return new Iterator<>() {
+            private Node current = head;
 
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            public T next() {
+                T data = current.data;
+                current = current.next;
+                return data;
+            }
+        };
+    }
 }
