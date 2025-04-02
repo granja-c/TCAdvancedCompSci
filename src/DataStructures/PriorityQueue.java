@@ -3,22 +3,22 @@ package DataStructures;
 public class PriorityQueue<T extends Comparable<T>> {
     private final Heap<T> heap;
 
-    public PriotityQueue() { heap = new Heap<>(); }
-    public PriotityQueue(boolean minh) { heap = new Heap<>(minh); }
-    
+    public PriorityQueue() { heap = new Heap<>(); }
+    public PriorityQueue(boolean minHeap) { heap = new Heap<>(minHeap); }
+
     public void enqueue(T element) { heap.insert(element); }
     public T dequeue() { return heap.delete(); }
     public T peek() { return heap.peek(); }
     public int size() {return heap.size(); }
     public boolean isEmpty() { return heap.isEmpty(); }
-    
+
     public boolean contains(T element) {
         for (int i = 0; i < heap.size(); i++) {
             if (heap.heap[i].equals(element)) return true;
         }
         return false;
     }
-    
+
     public void remove(T elem) {
         int ind = -1;
         for (int i = 0; i < heap.size(); i++) {
