@@ -21,8 +21,6 @@ class Job implements Comparable<Job> {
     }
 }
 
-
-
 public class Prog1060zPQ {
     public static void main(String[] args) {
         try {
