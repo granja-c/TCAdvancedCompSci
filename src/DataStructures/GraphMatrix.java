@@ -75,21 +75,38 @@ public class GraphMatrix<T extends Comparable<T>> implements Graph<T> {
 
     @Override
     public void displayGraph() {
-
+        System.out.println("Vertices: ");
+        vertices.enumerate();
+        System.out.println("Matrix:");
+        for (int i = 0; i < vertexCount; i++) {
+            for (int j = 0; j < vertexCount; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
 
     @Override
     public int getEdgeWeight(T source, T destination) {
-        return 0;
+        int sourceInd = vertices.get(source);
+        int destinationInd = vertices.get(destination);
+        return matrix[sourceInd][destinationInd];
     }
 
     @Override
     public Dictionary<T, Integer> getVertices() {
-        return null;
+        return vertices;
     }
-
+    public int[][] getMatrix() { return matrix; }
+    public int getVertexCount() { return vertexCount; }
     @Override
     public DynamicArray<T> getNeighbors(T vertex) {
-        return null;
+        DynamicArray<T> neighbors = new DynamicArray<>();
+        int sourceInd = vertices.get(vertex);
+        for (int i = 0; i < vertexCount; i++) {
+            if (matrix[sourceInd][i] != 0)
+                neighbors.add(vertices.getKey(i));
+        }
+        return neighbors;
     }
 }
